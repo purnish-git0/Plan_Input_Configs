@@ -121,7 +121,7 @@ public class ConstraintsController {
     }
 
     @GetMapping("/get-external-variables-constraints-for-input")
-    public ResponseEntity<List<ExternalConstraint>> getExternalConstraintsForInput(@RequestParam(name = "planId") Integer inputId) {
+    public ResponseEntity<List<ConstraintExternalToInput>> getExternalConstraintsForInput(@RequestParam(name = "planId") Integer inputId) {
         return ResponseEntity.ok(constraintsExternalToInputRepository.getExternalVariableConstraintsForInput(inputId));
     }
 }
