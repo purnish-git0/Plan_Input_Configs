@@ -133,7 +133,7 @@ which are simple enough to be stored
 
 and looked up from the db.
 
-Or it can be a hybrod approach such as
+Or it can be a hybrid approach such as
 
 Creating an Evaluator interface
 
