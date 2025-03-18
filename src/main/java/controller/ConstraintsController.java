@@ -6,6 +6,7 @@ import dto.CreateConstraintExternalToInputDTO;
 import dto.FrontEndConstraintsDTO;
 import entity.ExternalVariable;
 import entity.Input;
+import interfaces.ExternalConstraint;
 import interfaces.FrontEndConstraint;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -117,5 +118,10 @@ public class ConstraintsController {
     @GetMapping("/get-front-end-constraints-for-input")
     public ResponseEntity<List<FrontEndConstraintImpl>> getFrontEndConstraintsForInput(@RequestParam(name = "planId") Integer inputId) {
         return ResponseEntity.ok(frontEndConstraintRepository.getFrontEndConstraintsForInput(inputId));
+    }
+
+    @GetMapping("/get-external-variables-constraints-for-input")
+    public ResponseEntity<List<ExternalConstraint>> getExternalConstraintsForInput(@RequestParam(name = "planId") Integer inputId) {
+        return ResponseEntity.ok(constraintsExternalToInputRepository.getExternalVariableConstraintsForInput(inputId));
     }
 }
