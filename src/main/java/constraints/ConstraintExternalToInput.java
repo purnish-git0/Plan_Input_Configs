@@ -1,5 +1,6 @@
 package constraints;
 
+import entity.ExternalVariable;
 import entity.Input;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,19 +15,18 @@ import java.util.Set;
 @RequiredArgsConstructor
 @Data
 @Entity
-public class SimpleConstraint {
+public class ConstraintExternalToInput {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "constraint_on_id")
+    @JoinColumn(name = "constraint_on_input_id")
     private Input constraintOn;
 
     @OneToMany
-    @JoinColumn(name = "constrained_by_input")
-    private Set<Input> constrainedBy;
-
+    @JoinColumn(name = "ext_var")
+    private Set<ExternalVariable> externalVariable;
 
 }

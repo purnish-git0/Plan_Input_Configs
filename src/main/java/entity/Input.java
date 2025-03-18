@@ -1,12 +1,15 @@
 package entity;
 
+import constraints.ConstraintExternalToInput;
 import constraints.SimpleConstraint;
+import interfaces.ExternalConstraint;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.io.Externalizable;
 import java.util.Set;
 
 @Entity
@@ -34,4 +37,6 @@ public class Input {
     @OneToMany(mappedBy = "constraintOn")
     private Set<SimpleConstraint> constraints;
 
+    @OneToMany(mappedBy = "constraintOn")
+    private Set<ConstraintExternalToInput> constraintsExternalToInput;
 }
