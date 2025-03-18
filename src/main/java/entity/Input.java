@@ -1,6 +1,7 @@
 package entity;
 
 import constraints.ConstraintExternalToInput;
+import constraints.FrontEndConstraintImpl;
 import constraints.SimpleConstraint;
 import interfaces.ExternalConstraint;
 import jakarta.persistence.*;
@@ -39,4 +40,8 @@ public class Input {
 
     @OneToMany(mappedBy = "constraintOn")
     private Set<ConstraintExternalToInput> constraintsExternalToInput;
+
+    @OneToMany
+    @JoinColumn(name = "front_end_constraints_id")
+    private Set<FrontEndConstraintImpl> frontEndConstraints;
 }
