@@ -1,5 +1,6 @@
 package entity;
 
+import constraints.SimpleConstraint;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,6 +31,7 @@ public class Input {
     inverseJoinColumns = {@JoinColumn(name = "input_id")})
     private Set<Plan> plans;
 
-
+    @OneToMany(mappedBy = "constraintOn")
+    private Set<SimpleConstraint> constraints;
 
 }
