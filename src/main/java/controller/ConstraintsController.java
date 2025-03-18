@@ -8,16 +8,14 @@ import entity.ExternalVariable;
 import entity.Input;
 import interfaces.FrontEndConstraint;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import repository.ConstraintsExternalToInputRepository;
 import repository.ExternalVariableRepository;
 import repository.FrontEndConstraintRepository;
 import repository.InputRepository;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -116,4 +114,8 @@ public class ConstraintsController {
         return ResponseEntity.ok(retVal);
     }
 
+    @GetMapping("/get-front-end-constraints-for-input")
+    public ResponseEntity<List<FrontEndConstraintImpl>> getFrontEndConstraintsForInput(@RequestParam(name = "planId") Integer inputId) {
+        return ResponseEntity.ok(frontEndConstraintRepository.getFrontEndConstraintsForInput(inputId));
+    }
 }
